@@ -26,6 +26,11 @@ class JpaUserAccountRepository : JpaRepository(), UserAccountRepository {
   }
 
   override fun save(userAccount: UserAccount) {
-    jpaUnitOfWork.entityManager.persist(userAccount)
+    if (userAccount.id == null) {
+      jpaUnitOfWork.entityManager.persist(userAccount)
+    }
+    else {
+      jpaUnitOfWork.entityManager.merge(userAccount)
+    }
   }
 }

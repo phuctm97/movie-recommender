@@ -6,8 +6,7 @@ import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomi
 import org.springframework.context.ApplicationContext
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import vn.edu.uit.pmcl2015.movie_recommender.core.use_case.SignInUseCase
-import vn.edu.uit.pmcl2015.movie_recommender.core.use_case.SignUpUseCase
+import vn.edu.uit.pmcl2015.movie_recommender.core.use_case.*
 import vn.edu.uit.pmcl2015.movie_recommender.entry_point.EntryPointBootstrap
 import vn.edu.uit.pmcl2015.movie_recommender.entry_point.rest.*
 
@@ -44,10 +43,24 @@ open class RestEntryPointConfiguration {
       = AppController(restEntryPointConfig, entryPointBootstrap)
 
   @Bean
-  open fun doctorAccountController(signUpUseCase: SignUpUseCase)
+  open fun userAccountController(signUpUseCase: SignUpUseCase)
       = UserAccountController(signUpUseCase)
 
   @Bean
-  open fun doctorAccountSessionController(signInUseCase: SignInUseCase)
+  open fun userAccountSessionController(signInUseCase: SignInUseCase)
       = UserAccountSessionController(signInUseCase)
+
+  @Bean
+  open fun movieController(updateMovieCollectionUseCase: UpdateMovieCollectionUseCase,
+                           getMovieCollectionUseCase: GetMovieCollectionUseCase)
+      = MovieController(updateMovieCollectionUseCase,
+                        getMovieCollectionUseCase)
+
+  @Bean
+  open fun ratingController(updateRatingDataUseCase: UpdateRatingDataUseCase)
+      = RatingController(updateRatingDataUseCase)
+
+  @Bean
+  open fun recommendationController(getRecommendationsUseCase: GetRecommendationsUseCase)
+      = RecommendationController(getRecommendationsUseCase)
 }

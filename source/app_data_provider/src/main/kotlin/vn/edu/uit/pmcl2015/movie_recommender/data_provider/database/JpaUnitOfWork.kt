@@ -7,13 +7,15 @@ import javax.persistence.EntityManager
 import javax.persistence.EntityManagerFactory
 
 class JpaUnitOfWork(val entityManager: EntityManager) : UnitOfWork {
-  override fun flush(body: () -> Unit) {
+  override fun <T> flush(body: () -> T): T {
     if (entityManager.transaction.isActive)
       throw UnsupportedOperationException("There is another in-progress transaction")
 
     entityManager.transaction.begin()
-    body()
+    val result = body()
     commit()
+
+    return result
   }
 
   override fun fetch(entity: Any) {

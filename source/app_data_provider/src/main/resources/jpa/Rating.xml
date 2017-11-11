@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+                 version="2.0">
+
+  <entity class="vn.edu.uit.pmcl2015.movie_recommender.core.entity.Rating">
+    <table name="RATING"/>
+    <attributes>
+      <id name="id">
+        <column name="id"/>
+        <generated-value strategy="IDENTITY"/>
+      </id>
+      <basic name="userId">
+        <column name="user_id"/>
+      </basic>
+      <basic name="movieId">
+        <column name="movie_id"/>
+      </basic>
+      <basic name="rating">
+        <column name="rating"/>
+      </basic>
+      <basic name="timestamp">
+        <column name="timestamp"/>
+      </basic>
+    </attributes>
+  </entity>
+</entity-mappings>

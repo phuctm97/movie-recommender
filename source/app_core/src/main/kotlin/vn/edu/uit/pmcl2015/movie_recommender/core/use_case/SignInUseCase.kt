@@ -5,7 +5,7 @@ import vn.edu.uit.pmcl2015.movie_recommender.core.data_provider.UnitOfWorkProvid
 import vn.edu.uit.pmcl2015.movie_recommender.core.entity.CoreException
 import vn.edu.uit.pmcl2015.movie_recommender.core.entity.UserAccount
 import vn.edu.uit.pmcl2015.movie_recommender.core.generateUserAccountJwt
-import vn.edu.uit.pmcl2015.movie_recommender.core.hashSHA1
+import vn.edu.uit.pmcl2015.movie_recommender.core.hashSha1
 import vn.edu.uit.pmcl2015.movie_recommender.core.passwordHashingSalt
 
 /*******************************************************************************************************/
@@ -34,7 +34,7 @@ class SignInUseCase(private val unitOfWorkProvider: UnitOfWorkProvider,
 
       val userAccount: UserAccount = userAccountRepository.userAccountByUsername(username) ?: throw IncorrectUserAccountException()
 
-      val hashedPassword = hashSHA1(password, passwordHashingSalt())
+      val hashedPassword = hashSha1(password, passwordHashingSalt())
       if (userAccount.hashedPassword != hashedPassword) throw IncorrectUserAccountException()
 
       val jwt = generateUserAccountJwt(userAccount.id!!)

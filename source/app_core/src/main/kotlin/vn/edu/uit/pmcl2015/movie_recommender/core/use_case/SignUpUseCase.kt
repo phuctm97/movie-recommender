@@ -36,7 +36,7 @@ class SignUpUseCase(private val unitOfWorkProvider: UnitOfWorkProvider,
 
       val userAccount = UserAccount()
       userAccount.username = username
-      userAccount.hashedPassword = hashSHA1(password, passwordHashingSalt())
+      userAccount.hashedPassword = hashSha1(password, passwordHashingSalt())
 
       it.flush {
         userAccountRepository.save(userAccount)
