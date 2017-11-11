@@ -1,0 +1,7 @@
+description = 'Implement domain objects and use cases.'
+
+dependencies {
+  compile libs.common
+
+  testCompile libs.unit_test
+}

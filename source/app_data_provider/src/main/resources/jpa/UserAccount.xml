@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+                 version="2.0">
+
+  <entity class="vn.edu.uit.pmcl2015.movie_recommender.core.entity.UserAccount">
+    <table name="USER_ACCOUNT"/>
+    <attributes>
+      <id name="id">
+        <column name="id"/>
+        <generated-value strategy="IDENTITY"/>
+      </id>
+      <basic name="username">
+        <column name="username"/>
+      </basic>
+      <basic name="hashedPassword">
+        <column name="hashed_password"/>
+      </basic>
+    </attributes>
+  </entity>
+</entity-mappings>

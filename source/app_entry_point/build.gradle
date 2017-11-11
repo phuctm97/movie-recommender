@@ -1,0 +1,9 @@
+description = 'Define ways to interact with application (Rest APIs, GUIs, Commandline, ...).'
+
+dependencies {
+  compile project( ':app_core' )
+
+  compile libs.entry_rest
+
+  testCompile libs.unit_test
+}
