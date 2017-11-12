@@ -4,6 +4,10 @@ import vn.edu.uit.pmcl2015.movie_recommender.core.data_provider.MovieRepository
 import vn.edu.uit.pmcl2015.movie_recommender.core.entity.Movie
 
 class JpaMovieRepository : JpaRepository(), MovieRepository {
+  override fun getMovie(id: Int): Movie? {
+    return jpaUnitOfWork.entityManager.find(Movie::class.java, id)
+  }
+
   @Suppress("UNCHECKED_CAST")
   override fun getAllMoviesLike(search: String): List<Movie> {
     if (!search.isEmpty()) {

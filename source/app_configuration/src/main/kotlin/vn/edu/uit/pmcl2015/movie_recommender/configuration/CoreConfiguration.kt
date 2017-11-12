@@ -41,6 +41,10 @@ open class CoreConfiguration {
                                 ratingRepository)
 
   @Bean
-  open fun getRecommendationsUseCase()
-      = GetRecommendationsUseCase()
+  open fun getRecommendationsUseCase(unitOfWorkProvider: UnitOfWorkProvider,
+                                     ratingRepository: RatingRepository,
+                                     movieRepository: MovieRepository)
+      = GetRecommendationsUseCase(unitOfWorkProvider,
+                                  ratingRepository,
+                                  movieRepository)
 }

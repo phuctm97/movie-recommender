@@ -18,7 +18,7 @@ class RecommendationController(private val getRecommendationsUseCase: GetRecomme
   @GetMapping
   fun getRecommendations(@RequestParam("method", defaultValue = GetRecommendationsUseCase.BY_MEAN_RATINGS) method: String,
                          @RequestParam("limit", defaultValue = "10") limit: Int,
-                         @RequestParam("referenceMovieId", defaultValue = "0") referenceMovieId: Int)
+                         @RequestParam("reference_movie_id", defaultValue = "0") referenceMovieId: Int)
       = getRecommendationsUseCase.getRecommendations(method, limit, referenceMovieId)
 
 }

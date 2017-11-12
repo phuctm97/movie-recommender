@@ -21,11 +21,15 @@ interface MovieRepository : Repository {
 
   fun getAllMoviesLike(search: String): List<Movie>
 
+  fun getMovie(id: Int) : Movie?
+
   fun save(movie: Movie)
 }
 
 interface RatingRepository : Repository {
   fun deleteAllRatings()
+
+  fun getAllRatings() : List<Rating>
 
   fun save(rating: Rating)
 }
