@@ -2,9 +2,9 @@ package vn.edu.uit.pmcl2015.movie_recommender.core.use_case
 
 import vn.edu.uit.pmcl2015.movie_recommender.core.data_provider.UserAccountRepository
 import vn.edu.uit.pmcl2015.movie_recommender.core.data_provider.UnitOfWorkProvider
-import vn.edu.uit.pmcl2015.movie_recommender.core.entity.CoreException
+import vn.edu.uit.pmcl2015.movie_recommender.core.entity.DomainException
 import vn.edu.uit.pmcl2015.movie_recommender.core.entity.UserAccount
-import vn.edu.uit.pmcl2015.movie_recommender.core.generateUserAccountJwt
+import vn.edu.uit.pmcl2015.movie_recommender.core.generateUserAccountSessionJwt
 import vn.edu.uit.pmcl2015.movie_recommender.core.hashSha1
 import vn.edu.uit.pmcl2015.movie_recommender.core.passwordHashingSalt
 
@@ -12,7 +12,7 @@ import vn.edu.uit.pmcl2015.movie_recommender.core.passwordHashingSalt
 /* Exceptions */
 
 class IncorrectUserAccountException(developerMessage: String = "", moreInformation: String = "")
-  : CoreException("CE002001", "Incorrect sign in information", developerMessage, moreInformation)
+  : DomainException("CE002001", "Incorrect sign in information", developerMessage, moreInformation)
 
 
 /*******************************************************************************************************/
@@ -37,7 +37,7 @@ class SignInUseCase(private val unitOfWorkProvider: UnitOfWorkProvider,
       val hashedPassword = hashSha1(password, passwordHashingSalt())
       if (userAccount.hashedPassword != hashedPassword) throw IncorrectUserAccountException()
 
-      val jwt = generateUserAccountJwt(userAccount.id!!)
+      val jwt = generateUserAccountSessionJwt(userAccount.id!!)
       return SignInSuccessModel(userAccount.id!!,
                                 userAccount.username,
                                 jwt.token,

@@ -10,6 +10,8 @@ import vn.edu.uit.pmcl2015.movie_recommender.core.use_case.*
 import vn.edu.uit.pmcl2015.movie_recommender.entry_point.EntryPointBootstrap
 import vn.edu.uit.pmcl2015.movie_recommender.entry_point.rest.*
 
+/*
+
 @Configuration
 open class RestEntryPointConfiguration {
   @Bean
@@ -64,3 +66,5 @@ open class RestEntryPointConfiguration {
   open fun recommendationController(getRecommendationsUseCase: GetRecommendationsUseCase)
       = RecommendationController(getRecommendationsUseCase)
 }
+
+*/

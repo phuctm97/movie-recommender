@@ -17,7 +17,7 @@ allprojects {
 // Kotlin configuration for root-project
 // because of gradle bug in centralizing sub-project buildscript in root-project
 buildscript {
-  ext.kotlin_version = '1.1.51'
+  ext.kotlin_version = '1.1.61'
 
   repositories {
     mavenCentral()
@@ -94,14 +94,14 @@ subprojects {
 
       database_mysql           : [
           'org.hibernate:hibernate-entitymanager:5.2.12.Final',
-          'org.springframework.data:spring-data-jpa:2.0.1.RELEASE',
-          'mysql:mysql-connector-java:6.0.6'
+          'mysql:mysql-connector-java:6.0.6',
+          'org.springframework.data:spring-data-jpa:2.0.1.RELEASE'
       ],
 
       database_postgres        : [
           'org.hibernate:hibernate-entitymanager:5.2.12.Final',
-          'org.springframework.data:spring-data-jpa:2.0.1.RELEASE',
-          'org.postgresql:postgresql:42.1.4'
+          'org.postgresql:postgresql:42.1.4',
+          'org.springframework.data:spring-data-jpa:2.0.1.RELEASE'
       ],
 
       spring_boot_rest         : [

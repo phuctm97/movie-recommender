@@ -4,6 +4,7 @@ dependencies {
   compile project( ':app_core' )
 
   compile libs.entry_rest
+  compile libs.entry_web
 
   testCompile libs.unit_test
 }

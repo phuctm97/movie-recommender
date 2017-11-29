@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.context.request.WebRequest
 import vn.edu.uit.pmcl2015.movie_recommender.core.currentTimestamp
-import vn.edu.uit.pmcl2015.movie_recommender.core.entity.CoreException
+import vn.edu.uit.pmcl2015.movie_recommender.core.entity.DomainException
 import vn.edu.uit.pmcl2015.movie_recommender.entry_point.EntryPointBootstrap
 
 /****************************************************************************************************/
@@ -43,11 +43,11 @@ class RestResponseExceptionHandler {
 
   @ExceptionHandler(RuntimeException::class)
   fun handleException(ex: RuntimeException, request: WebRequest): ResponseEntity<ErrorDto> {
-    if (ex is CoreException) return handleCoreException(ex)
+    if (ex is DomainException) return handleCoreException(ex)
     return handleUnexpectedException(ex, request)
   }
 
-  private fun handleCoreException(ex: CoreException): ResponseEntity<ErrorDto> {
+  private fun handleCoreException(ex: DomainException): ResponseEntity<ErrorDto> {
     val errorDto = ErrorDto(ex.errorCode,
                             ex.javaClass.simpleName,
                             coreExceptionStatusCode(),

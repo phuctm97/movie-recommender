@@ -3,7 +3,7 @@ package vn.edu.uit.pmcl2015.movie_recommender.core.use_case
 import vn.edu.uit.pmcl2015.movie_recommender.core.*
 import vn.edu.uit.pmcl2015.movie_recommender.core.data_provider.UserAccountRepository
 import vn.edu.uit.pmcl2015.movie_recommender.core.data_provider.UnitOfWorkProvider
-import vn.edu.uit.pmcl2015.movie_recommender.core.entity.CoreException
+import vn.edu.uit.pmcl2015.movie_recommender.core.entity.DomainException
 import vn.edu.uit.pmcl2015.movie_recommender.core.entity.UserAccount
 
 
@@ -11,7 +11,7 @@ import vn.edu.uit.pmcl2015.movie_recommender.core.entity.UserAccount
 /* Exceptions */
 
 class UserAccountExistedException(developerMessage: String = "", moreInformation: String = "")
-  : CoreException("CE001001", "Doctor account has already existed", developerMessage, moreInformation)
+  : DomainException("CE001001", "Doctor account has already existed", developerMessage, moreInformation)
 
 
 /*******************************************************************************************************/
@@ -42,7 +42,7 @@ class SignUpUseCase(private val unitOfWorkProvider: UnitOfWorkProvider,
         userAccountRepository.save(userAccount)
       }
 
-      val jwt = generateUserAccountJwt(userAccount.id!!)
+      val jwt = generateUserAccountSessionJwt(userAccount.id!!)
       return SignUpSuccessModel(userAccount.id!!,
                                 userAccount.username,
                                 jwt.token,

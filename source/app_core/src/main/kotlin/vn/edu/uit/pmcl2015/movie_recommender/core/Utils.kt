@@ -2,11 +2,17 @@ package vn.edu.uit.pmcl2015.movie_recommender.core
 
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
-import org.apache.commons.csv.CSVFormat
-import java.io.StringReader
 import java.security.MessageDigest
 import java.util.*
 import kotlin.experimental.and
+
+/******************************************************************************/
+/* Models */
+
+data class Jwt(val token: String, val expireTime: Long)
+
+/******************************************************************************/
+/* Utils */
 
 fun currentTimestamp(): Long = System.currentTimeMillis()
 
@@ -23,11 +29,9 @@ fun hashSha1(source: String, salt: String): String {
   return sb.toString()
 }
 
-data class Jwt(val token: String, val expireTime: Long)
-
-fun generateUserAccountJwt(accountId: Int): Jwt {
+fun generateUserAccountSessionJwt(accountId: Int): Jwt {
   val algorithm = Algorithm.HMAC256(userAccountJwtSecretKey())
-  val expireTime = currentTimestamp() + userAccountJwtExpiryDuration()
+  val expireTime = currentTimestamp() + userAccountSessionJwtExpiryDuration()
 
   val builder = JWT.create()
       .withIssuer("vn.edu.uit.pmcl2015.movie_recommender")
