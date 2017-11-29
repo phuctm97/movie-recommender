@@ -12,7 +12,7 @@ import kotlin.system.measureTimeMillis
 /*******************************************************************************************************/
 /* Models */
 
-data class Recommendation(val movieId: Int, val movieTitle: String, val score: Float)
+data class Recommendation(val movieId: Int, val movieTitle: String, val moviePoster: String?, val score: Float)
 
 /*******************************************************************************************************/
 /* Use case */
@@ -355,7 +355,7 @@ class GetRecommendationsUseCase(private val unitOfWorkProvider: UnitOfWorkProvid
 
       for (result in results) {
         val movie = movieRepository.getMovie(result.first) ?: continue
-        recommendations.add(Recommendation(movie.id!!, movie.title, result.second))
+        recommendations.add(Recommendation(movie.id!!, movie.title, movie.poster, result.second))
       }
     }
     return recommendations

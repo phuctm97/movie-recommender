@@ -289,12 +289,14 @@
                     <div class="w3_agile_featured_movies">
                         <th:block th:each="movie: ${movies}">
                             <div class="col-md-2 w3l-movie-gride-agile">
-                                <a th:href="@{'movies/' + ${movie.id}}" class="hvr-shutter-out-horizontal"><img src="images/m15.jpg"
-                                                                                                      title="album-name"
+                                <div style="height: 300px;">
+                                <a th:href="@{'movies/' + ${movie.id}}" class="hvr-shutter-out-horizontal"><img th:src="${movie.poster}"
+                                                                                                      th:title="${movie.title}"
                                                                                                       class="img-responsive"
                                                                                                       alt=" "/>
                                     <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
                                 </a>
+                                </div>
                                 <div class="mid-1 agileits_w3layouts_mid_1_home">
                                     <div class="w3l-movie-text">
                                         <h6><a th:href="@{'movies/' + ${movie.id}}"><strong th:text="${movie.title}"></strong></a></h6>
@@ -321,12 +323,15 @@
                 <div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
                     <th:block th:each="movie: ${list1}">
                         <div class="col-md-2 w3l-movie-gride-agile">
-                            <a th:href="@{'movies/' + ${movie.movieId}}" class="hvr-shutter-out-horizontal"><img src="images/m15.jpg"
-                                                                                                            title="album-name"
+                            <div style="height: 300px;">
+                            <a th:href="@{'movies/' + ${movie.movieId}}" class="hvr-shutter-out-horizontal"><img th:src="${movie.moviePoster}"
+                                                                                                            th:title="${movie.movieTitle}"
+                                                                                                                 height="300px"
                                                                                                             class="img-responsive"
                                                                                                             alt=" "/>
                                 <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
                             </a>
+                            </div>
                             <div class="mid-1 agileits_w3layouts_mid_1_home">
                                 <div class="w3l-movie-text">
                                     <h6><a th:href="@{'movies/' + ${movie.movieId}}"><strong th:text="${movie.movieTitle}"></strong></a></h6>
@@ -352,12 +357,15 @@
                 <div role="tabpanel" class="tab-pane fade" id="rating" aria-labelledby="rating-tab">
                     <th:block th:each="movie: ${list2}">
                         <div class="col-md-2 w3l-movie-gride-agile">
-                            <a th:href="@{'movies/' + ${movie.movieId}}" class="hvr-shutter-out-horizontal"><img src="images/m15.jpg"
-                                                                                                                 title="album-name"
+                            <div style="height: 300px;">
+                            <a th:href="@{'movies/' + ${movie.movieId}}" class="hvr-shutter-out-horizontal"><img th:src="${movie.moviePoster}"
+                                                                                                                 th:title="${movie.movieTitle}"
+                                                                                                                 height="300px"
                                                                                                                  class="img-responsive"
                                                                                                                  alt=" "/>
                                 <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
                             </a>
+                            </div>
                             <div class="mid-1 agileits_w3layouts_mid_1_home">
                                 <div class="w3l-movie-text">
                                     <h6><a th:href="@{'movies/' + ${movie.movieId}}"><strong th:text="${movie.movieTitle}"></strong></a></h6>

@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import vn.edu.uit.pmcl2015.movie_recommender.core.use_case.GetMovieCollectionUseCase
 import vn.edu.uit.pmcl2015.movie_recommender.core.use_case.GetRecommendationsUseCase
+import vn.edu.uit.pmcl2015.movie_recommender.core.use_case.UpdateMovieCollectionUseCase
 import vn.edu.uit.pmcl2015.movie_recommender.entry_point.EntryPointBootstrap
 import vn.edu.uit.pmcl2015.movie_recommender.entry_point.web.AppController
 import vn.edu.uit.pmcl2015.movie_recommender.entry_point.web.MovieController
@@ -41,7 +42,9 @@ open class WebEntryPointConfiguration {
 
   @Bean
   open fun movieController(getMovieCollectionUseCase: GetMovieCollectionUseCase,
-                           getRecommendationsUseCase: GetRecommendationsUseCase)
+                           getRecommendationsUseCase: GetRecommendationsUseCase,
+                           updateMovieCollectionUseCase: UpdateMovieCollectionUseCase)
       = MovieController(getMovieCollectionUseCase,
-                        getRecommendationsUseCase)
+                        getRecommendationsUseCase,
+                        updateMovieCollectionUseCase)
 }

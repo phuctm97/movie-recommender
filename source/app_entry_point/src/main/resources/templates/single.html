@@ -80,8 +80,8 @@
             <a th:href="@{/movies}"><h1>One<span>Movies</span></h1></a>
         </div>
         <div class="w3_search">
-            <form action="#" method="post">
-                <input type="text" name="Search" placeholder="Search" required=""/>
+            <form action="/movies" method="get">
+                <input type="search" name="search" placeholder="Search" required=""/>
                 <input type="submit" value="Go"/>
             </form>
         </div>
@@ -280,10 +280,10 @@
                 <div class="col-sm-12 single-left">
                     <div class="song">
                         <div class="song-info">
-                            <h3 th:text="@{${title} + ' - Offical Trailer'}"></h3>
+                            <h2><strong th:text="${title}"></strong> - Backdrop</h2>
                         </div>
                         <div class="video-grid-single-page-agileits">
-                            <div data-video="dLmKio67pVQ" id="video"> <img src="../images/5.jpg" alt="" class="img-responsive" /> </div>
+                            <div data-video="dLmKio67pVQ" id="video"> <img th:src="${backdrop}" alt="" class="img-responsive" /> </div>
                         </div>
                     </div>
                     <div class="song-grid-right">
@@ -301,7 +301,7 @@
                     <th:block th:each="recommendation: ${list1}">
                         <div class="item">
                         <div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
-                            <a th:href="@{'../movies/' + ${recommendation.movieId}}" class="hvr-shutter-out-horizontal"><img src="../images/m13.jpg" title="album-name" class="img-responsive" alt=" " />
+                            <a th:href="@{'../movies/' + ${recommendation.movieId}}" class="hvr-shutter-out-horizontal"><img th:src="${recommendation.moviePoster}" th:title="${recommendation.movieTitle}" class="img-responsive" alt=" " />
                                 <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
                             </a>
                             <div class="mid-1 agileits_w3layouts_mid_1_home">
@@ -336,7 +336,7 @@
                     <th:block th:each="recommendation: ${list2}">
                         <div class="item">
                         <div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
-                            <a th:href="@{'../movies/' + ${recommendation.movieId}}" class="hvr-shutter-out-horizontal"><img src="../images/m13.jpg" title="album-name" class="img-responsive" alt=" " />
+                            <a th:href="@{'../movies/' + ${recommendation.movieId}}" class="hvr-shutter-out-horizontal"><img th:src="${recommendation.moviePoster}" th:title="${recommendation.movieTitle}" class="img-responsive" alt=" " />
                                 <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
                             </a>
                             <div class="mid-1 agileits_w3layouts_mid_1_home">

@@ -78,7 +78,8 @@ subprojects {
           'commons-validator:commons-validator:1.6',
           'com.google.code.gson:gson:2.8.2',
           'org.slf4j:slf4j-api:1.7.25',
-          'com.auth0:java-jwt:3.3.0'
+          'com.auth0:java-jwt:3.3.0',
+          'com.github.kittinunf.fuel:fuel:1.12.0'
       ],
 
       entry_rest               : [

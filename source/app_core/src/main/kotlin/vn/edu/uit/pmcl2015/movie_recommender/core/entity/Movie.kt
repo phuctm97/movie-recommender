@@ -4,4 +4,8 @@ class Movie {
   var id: Int? = null
 
   var title: String = ""
+
+  var poster: String? = ""
+
+  var backdrop: String? = ""
 }

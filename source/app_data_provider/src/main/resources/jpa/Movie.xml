@@ -11,6 +11,12 @@
       <basic name="title">
         <column name="title"/>
       </basic>
+      <basic name="poster">
+        <column name="poster"/>
+      </basic>
+      <basic name="backdrop">
+        <column name="backdrop"/>
+      </basic>
     </attributes>
   </entity>
 </entity-mappings>
