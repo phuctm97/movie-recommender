@@ -19,8 +19,15 @@ class MovieController(private val getMovieCollectionUseCase: GetMovieCollectionU
   @GetMapping()
   fun getAll(@RequestParam("search", defaultValue = "") search: String,
              model: ModelMap): String {
-    val list = getMovieCollectionUseCase.getMovieCollection(search)
-    model.put("list", list.take(20))
+    val movies = getMovieCollectionUseCase.getMovieCollection(search)
+    model.put("movies", movies.take(20))
+
+    val list1 = getRecommendationsUseCase.getRecommendationsByMeanRatings(10)
+    model.put("list1", list1)
+
+    val list2 = getRecommendationsUseCase.getRecommendationsByDampedMeanRating(10)
+    model.put("list2", list2)
+
     return "index"
   }
 
@@ -29,11 +36,11 @@ class MovieController(private val getMovieCollectionUseCase: GetMovieCollectionU
     val movie = getMovieCollectionUseCase.getMovie(id)
     model.put("title", movie.title)
 
-    val list1 = getRecommendationsUseCase.getRecommendationsByDampedMeanRating(5)
-    val list2 = getRecommendationsUseCase.getRecommendationsByBasicAssociations(5, id)
+    val list1 = getRecommendationsUseCase.getRecommendationsByDampedMeanRating(10)
+    val list2 = getRecommendationsUseCase.getRecommendationsByBasicAssociations(10, id)
 
     model.put("list1", list1)
     model.put("list2", list2)
-    return "film"
+    return "single"
   }
 }
