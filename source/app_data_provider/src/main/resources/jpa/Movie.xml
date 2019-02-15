@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+                 version="2.0">
+
+  <entity class="vn.edu.uit.pmcl2015.movie_recommender.core.entity.Movie">
+    <table name="MOVIE"/>
+    <attributes>
+      <id name="id">
+        <column name="id"/>
+      </id>
+      <basic name="title">
+        <column name="title"/>
+      </basic>
+      <basic name="poster">
+        <column name="poster"/>
+      </basic>
+      <basic name="backdrop">
+        <column name="backdrop"/>
+      </basic>
+    </attributes>
+  </entity>
+</entity-mappings>

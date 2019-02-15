@@ -6,10 +6,10 @@ import org.springframework.context.annotation.Primary
 import org.springframework.jdbc.datasource.DriverManagerDataSource
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter
+import vn.edu.uit.pmcl2015.movie_recommender.core.data_provider.MovieRepository
+import vn.edu.uit.pmcl2015.movie_recommender.core.data_provider.RatingRepository
 import vn.edu.uit.pmcl2015.movie_recommender.core.data_provider.UserAccountRepository
-import vn.edu.uit.pmcl2015.movie_recommender.data_provider.database.DatabaseDataProviderConfig
-import vn.edu.uit.pmcl2015.movie_recommender.data_provider.database.JpaUserAccountRepository
-import vn.edu.uit.pmcl2015.movie_recommender.data_provider.database.JpaUnitOfWorkProvider
+import vn.edu.uit.pmcl2015.movie_recommender.data_provider.database.*
 import java.util.*
 import javax.persistence.EntityManagerFactory
 import javax.sql.DataSource
@@ -75,4 +75,10 @@ open class DatabaseDataProviderConfiguration {
 
   @Bean
   open fun userAccountRepository(): UserAccountRepository = JpaUserAccountRepository()
+
+  @Bean
+  open fun movieRepository(): MovieRepository = JpaMovieRepository()
+
+  @Bean
+  open fun ratingRepository(): RatingRepository = JpaRatingRepository()
 }

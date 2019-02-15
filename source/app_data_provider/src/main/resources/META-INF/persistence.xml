@@ -3,5 +3,7 @@
   <persistence-unit name="default">
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     <mapping-file>jpa/UserAccount.xml</mapping-file>
+    <mapping-file>jpa/Movie.xml</mapping-file>
+    <mapping-file>jpa/Rating.xml</mapping-file>
   </persistence-unit>
 </persistence>

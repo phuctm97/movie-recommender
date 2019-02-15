@@ -1,5 +1,7 @@
 package vn.edu.uit.pmcl2015.movie_recommender.core.data_provider
 
+import vn.edu.uit.pmcl2015.movie_recommender.core.entity.Movie
+import vn.edu.uit.pmcl2015.movie_recommender.core.entity.Rating
 import vn.edu.uit.pmcl2015.movie_recommender.core.entity.UserAccount
 
 interface Repository {
@@ -12,4 +14,22 @@ interface UserAccountRepository : Repository {
   fun userAccountByUsername(username: String): UserAccount?
 
   fun save(userAccount: UserAccount)
+}
+
+interface MovieRepository : Repository {
+  fun deleteAllMovies()
+
+  fun getAllMoviesLike(search: String): List<Movie>
+
+  fun getMovie(id: Int) : Movie?
+
+  fun save(movie: Movie)
+}
+
+interface RatingRepository : Repository {
+  fun deleteAllRatings()
+
+  fun getAllRatings() : List<Rating>
+
+  fun save(rating: Rating)
 }
